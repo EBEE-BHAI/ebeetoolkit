@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaifuu Aur Ebbie</title>
+    <style>
+        body {
+            font-family: 'Pacifico', cursive;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBJNflYNKBwArtv6LJDbSnASjMNHXUsgEHgOPepyJaO-542Bz76xeYa4M&s=10') center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 50px;
+            color: #fff;
+            animation: colorChange 5s infinite alternate;
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+            animation: scaleText 3s infinite alternate;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #FFD700;
+            text-shadow: 1px 1px 2px #000;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .red {
+            color: #FF0000;
+        }
+
+        #whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #whatsapp-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        @keyframes colorChange {
+            from { color: #fff; }
+            to { color: #FFD700; }
+        }
+
+        @keyframes scaleText {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Kaifuu Aur Ebbie</h1>
+    <div class="countdown" id="countdown"></div>
+
+    <!-- WhatsApp Icon -->
+    <a id="whatsapp-icon" href="https://wa.link/gvcv3o" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMIQtzXlvQpBs9e5EClMuUijWV_P5I3aqNeQ&usqp=CAU" alt="WhatsApp Icon">
+    </a>
+
+    <script>
+        // Date you met
+        const metDate = new Date('December 10, 2023 18:04:00').getTime();
+
+        function updateCountdown() {
+            // Current date and time
+            const currentDate = new Date().getTime();
+
+            // Calculate the difference in milliseconds
+            const timeDifference = currentDate - metDate;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Display the result
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.innerHTML = `Since we met on December <span class="red">${days} days</span>, <span class="red">${hours} hours</span>, <span class="red">${minutes} minutes</span>, and <span class="red">${seconds} seconds</span>.`;
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial update
+        updateCountdown();
+    </script>
+</body>
+</html>
